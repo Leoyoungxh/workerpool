@@ -107,3 +107,7 @@ func (p *Pool) GoCtx(ctx context.Context, task Task) {
 		}
 	}()
 }
+
+func NoComments() int {
+	return 1
+}
