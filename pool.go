@@ -45,7 +45,7 @@ type Pool struct {
 }
 
 // New creates a new worker pool.
-func New(maxIdle int, maxIdleTime time.Duration) *Pool {
+func New(maxIdle int, maxIdleTime time.Duration, i int) *Pool {
 	return &Pool{
 		tasks:       make(chan Task),
 		maxIdle:     int32(maxIdle),
@@ -96,6 +96,7 @@ func (p *Pool) GoCtx(ctx context.Context, task Task) {
 				task()
 			case <-idleTimer.C:
 				// worker exits
+				log.Printf("goroutine return...")
 				return
 			}
 
@@ -105,4 +106,8 @@ func (p *Pool) GoCtx(ctx context.Context, task Task) {
 			idleTimer.Reset(p.maxIdleTime)
 		}
 	}()
+}
+
+func NoComments() int {
+	return 1
 }

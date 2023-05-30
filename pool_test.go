@@ -29,7 +29,7 @@ import (
 func TestWPool(t *testing.T) {
 	maxIdle := 1
 	maxIdleTime := time.Millisecond * 500
-	p := New(maxIdle, maxIdleTime)
+	p := New(maxIdle, maxIdleTime, 0)
 	var (
 		sum  int32
 		wg   sync.WaitGroup
