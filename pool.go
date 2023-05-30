@@ -45,7 +45,7 @@ type Pool struct {
 }
 
 // New creates a new worker pool.
-func New(maxIdle int, maxIdleTime time.Duration) *Pool {
+func New(maxIdle int, maxIdleTime time.Duration, i int) *Pool {
 	return &Pool{
 		tasks:       make(chan Task),
 		maxIdle:     int32(maxIdle),
